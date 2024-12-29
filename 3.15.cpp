@@ -25,10 +25,13 @@ public:
 	}
 	
 	void setday(int d){
-	    day=d;
+	    if(d>=1&&m<=31) {
+	    	day=d;
+	    }
 	}
 	
 	void setyear(int y){
+	    if(y>0)
 	    year=y;
 	}
 	
