@@ -3,16 +3,21 @@
 using namespace std;
 class date {
 
+
 private:
 	int month;
 	int day;
 	int year;
+	static const int max_month_days[12];
+
+	//int max_month_days[];
 
 public:
  date (int m,int d,int y) {
 		month=m;
-		day=d;
+		setday(d);//day=d;
 		year=y;
+		//max_month_days[]= {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 	}
 	
 
@@ -25,7 +30,16 @@ public:
 	}
 	
 	void setday(int d){
-	    day=d;
+	    
+	    int max_day = max_month_days[month-1];
+	    // int max_day = 30;
+	    if(d>max_day){
+	        day = max_day;
+	    }else{
+	        day = d;
+	    }
+	    
+	    
 	}
 	
 	void setyear(int y){
@@ -47,9 +61,11 @@ public:
 	}
 };
 
+const int date::max_month_days[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
 int main()
 {
-    date date1(10,20,1996);
+    date date1(4,31,1996);
     
     cout<<"initial date:";
     date1.displaydate();
